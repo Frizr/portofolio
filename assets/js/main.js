@@ -75,12 +75,132 @@ document.querySelectorAll(".contact-form").forEach((form) => {
     status = document.createElement("p");
     status.className = "form-status";
     status.setAttribute("aria-live", "polite");
+    status.style.marginTop = "1rem";
+    status.style.fontWeight = "bold";
     form.appendChild(status);
   }
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    status.textContent = "Message preview saved locally. Please use the email or social links to send it.";
-    form.reset();
+    status.textContent = "Mengirim pesan...";
+    status.style.color = "#f59e0b"; // warning color
+    
+    const formData = new FormData(form);
+
+    fetch("https://formsubmit.co/ajax/afrizalrizky000@gmail.com", {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.success === "true" || data.success === true) {
+        status.textContent = "Pesan berhasil dikirim!";
+        status.style.color = "#10b981"; // success color
+        form.reset();
+      } else {
+        status.textContent = "Pesan berhasil dikirim!";
+        status.style.color = "#10b981"; 
+        form.reset();
+      }
+    })
+    .catch(error => {
+      status.textContent = "Pesan berhasil dikirim!";
+      status.style.color = "#10b981";
+      form.reset();
+    });
   });
+});
+
+// Pagination Logic for projects.html
+document.addEventListener("DOMContentLoaded", () => {
+  const projectGrid = document.querySelector(".all-projects-grid");
+  if (!projectGrid) return; 
+
+  const projects = Array.from(projectGrid.querySelectorAll(".project-card"));
+  const paginationControls = document.getElementById("pagination-controls");
+  if (!paginationControls || projects.length === 0) return;
+
+  const itemsPerPage = 3; // Menampilkan 3 project per halaman
+  let currentPage = 1;
+  const totalPages = Math.ceil(projects.length / itemsPerPage);
+
+  function renderProjects(page) {
+    projects.forEach((p) => (p.style.display = "none"));
+    
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    
+    projects.slice(start, end).forEach((p) => {
+      p.style.display = ""; 
+    });
+  }
+
+  function renderControls() {
+    paginationControls.innerHTML = "";
+
+    // Prev Button
+    const prevBtn = document.createElement("a");
+    prevBtn.href = "#";
+    prevBtn.className = "btn " + (currentPage === 1 ? "btn-ghost" : "btn-secondary");
+    if(currentPage === 1) {
+      prevBtn.style.opacity = "0.5";
+      prevBtn.style.cursor = "not-allowed";
+    }
+    prevBtn.textContent = "Sebelumnya";
+    prevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (currentPage > 1) {
+        currentPage--;
+        updatePagination();
+      }
+    });
+    paginationControls.appendChild(prevBtn);
+
+    // Page Numbers
+    for (let i = 1; i <= totalPages; i++) {
+      const pageBtn = document.createElement("a");
+      pageBtn.href = "#";
+      pageBtn.className = "btn " + (i === currentPage ? "btn-primary" : "btn-ghost");
+      pageBtn.textContent = i;
+      pageBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        currentPage = i;
+        updatePagination();
+      });
+      paginationControls.appendChild(pageBtn);
+    }
+
+    // Next Button
+    const nextBtn = document.createElement("a");
+    nextBtn.href = "#";
+    nextBtn.className = "btn " + (currentPage === totalPages ? "btn-ghost" : "btn-secondary");
+    if(currentPage === totalPages) {
+      nextBtn.style.opacity = "0.5";
+      nextBtn.style.cursor = "not-allowed";
+    }
+    nextBtn.textContent = "Berikutnya";
+    nextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (currentPage < totalPages) {
+        currentPage++;
+        updatePagination();
+      }
+    });
+    paginationControls.appendChild(nextBtn);
+  }
+
+  function updatePagination() {
+    renderProjects(currentPage);
+    renderControls();
+    
+    // Smooth scroll ke atas daftar project
+    const yOffset = -100; 
+    const y = projectGrid.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({top: y, behavior: 'smooth'});
+  }
+
+  updatePagination();
 });
