@@ -82,7 +82,7 @@ document.querySelectorAll(".contact-form").forEach((form) => {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    status.textContent = "Mengirim pesan...";
+    status.textContent = "Sending message...";
     status.style.color = "#f59e0b"; // warning color
     
     const formData = new FormData(form);
@@ -97,19 +97,22 @@ document.querySelectorAll(".contact-form").forEach((form) => {
     .then(response => response.json())
     .then(data => {
       if(data.success === "true" || data.success === true) {
-        status.textContent = "Pesan berhasil dikirim!";
+        status.textContent = "Message sent successfully!";
         status.style.color = "#10b981"; // success color
         form.reset();
       } else {
-        // Gagal dari server
-        status.textContent = "Gagal mengirim pesan. Pastikan form sudah diaktivasi.";
-        status.style.color = "#ef4444"; // red
+        // Gagal dari server, mungkin karena butuh aktivasi pertama kali dari domain baru
+        // Kita fallback ke normal submit agar diarahkan ke halaman aktivasi FormSubmit
+        status.textContent = "Redirecting for security verification (1x only)...";
+        status.style.color = "#3b82f6"; // blue
+        form.submit();
       }
     })
     .catch(error => {
-      // Error jaringan atau CORS (karena domain baru belum diaktivasi)
-      status.textContent = "Error: Anda harus mengaktifkan domain Vercel ini lewat email Anda terlebih dahulu.";
-      status.style.color = "#ef4444";
+      // Error jaringan atau CORS (biasanya karena butuh aktivasi)
+      status.textContent = "Redirecting for security verification (1x only)...";
+      status.style.color = "#3b82f6";
+      form.submit();
     });
   });
 });
@@ -149,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
       prevBtn.style.opacity = "0.5";
       prevBtn.style.cursor = "not-allowed";
     }
-    prevBtn.textContent = "Sebelumnya";
+    prevBtn.textContent = "Previous";
     prevBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (currentPage > 1) {
@@ -181,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
       nextBtn.style.opacity = "0.5";
       nextBtn.style.cursor = "not-allowed";
     }
-    nextBtn.textContent = "Berikutnya";
+    nextBtn.textContent = "Next";
     nextBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (currentPage < totalPages) {
