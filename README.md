@@ -1,12 +1,12 @@
-# Mohammad Afrizal Rizky Setyawan Portfolio
+# Mohammad Afrizal Rizky Setyawan Project Website
 
-🚀 **Live Demo:** [https://portofolio-delta-lyart.vercel.app/](https://portofolio-delta-lyart.vercel.app/)
+Live Demo: [https://portofolio-delta-lyart.vercel.app/](https://portofolio-delta-lyart.vercel.app/)
 
-Professional personal portfolio landing page for Mohammad Afrizal Rizky Setyawan, an Information Technology student at Telkom University Surabaya.
+Personal project website for Mohammad Afrizal Rizky Setyawan, an Information Technology student at Telkom University Surabaya.
 
 ## Short Description
 
-This website is designed for internship applications, personal branding, and academic project showcase. The personal data is aligned with the GitHub profile README, and the project section highlights the repositories currently pinned on the GitHub profile.
+This website is designed for internship applications and academic project notes. The personal data is aligned with the GitHub profile README, and the project section highlights repositories currently pinned on the GitHub profile.
 
 ## Tech Stack
 
@@ -18,14 +18,18 @@ This website is designed for internship applications, personal branding, and aca
 ## Folder Structure
 
 ```text
-portfolio/
+project-website/
   index.html
   projects.html
-  project-detail.html
+  project-detail-boss-laundry.html
+  project-detail-down.html
+  project-detail-kasirkilat.html
+  project-detail-laundrypos.html
+  project-detail-oop-laundry.html
+  project-detail-sheconnect.html
   css/
     style.css
   assets/
-    images/
     js/
       main.js
   README.md
@@ -33,19 +37,19 @@ portfolio/
 
 ## Main Features
 
-- Responsive premium dark portfolio landing page
-- Sticky glassmorphism navigation
-- Hero section with 3D-inspired CSS visual
+- Responsive dark project website
+- Sticky navigation
+- Hero section with a technology-themed CSS visual
 - About Me and personal identity cards
-- Aurora-style landing page structure: Home, About, Experience, Skills, Services, Portfolio, Signals, Blog, Contact
-- Prism Flux-inspired dark carbon and prismatic visual tone
+- Page structure: Home, About, Experience, Skills, Services, Project, Notes, Learning Notes, Contact
+- Dark visual style with project cards and simple section layouts
 - Skills aligned with IoT, Arduino, frontend, backend, UI/UX, mobile, and programming fundamentals
-- GitHub pinned project showcase
+- GitHub pinned project list
 - Dedicated projects page
-- Boss_Laundry project detail page
+- Project detail pages
 - Education and project practice timeline
 - Contact section with GitHub and Instagram links
-- Vanilla JavaScript for mobile menu behavior, reveal animation, card tilt, and form status
+- Vanilla JavaScript for mobile menu behavior, reveal animation, card tilt, contact form status, and project pagination
 
 ## Highlighted GitHub Projects
 
@@ -60,11 +64,11 @@ portfolio/
 
 1. Open the project folder in VS Code.
 2. Open `index.html` directly in a browser.
-3. Replace placeholder links, LinkedIn, and WhatsApp with real data when ready.
+3. Replace any placeholder demo links when live demos are available.
 
 ## Screenshot Placeholder
 
-Add your portfolio screenshot here after opening the website in a browser.
+Add your project website screenshot here after opening the website in a browser.
 
 ```text
 assets/images/screenshot.png

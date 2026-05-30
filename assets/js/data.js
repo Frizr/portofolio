@@ -1,4 +1,4 @@
-window.portfolioData = {
+window.projectData = {
   photoKey: "afrizal-profile-photo-v1",
   skills: [
     { title: "Frontend Web", items: ["HTML", "CSS", "JavaScript", "Bootstrap"] },
@@ -114,9 +114,9 @@ window.portfolioData = {
       summary: "Game isometric action-combat berbasis Godot 4 .NET/C# yang masih dalam pengembangan.",
       stack: ["Godot 4", "C#", ".NET", "FSM", "Isometric Math"],
       context: "Eksplorasi game development membutuhkan input, movement, combat, enemy behavior, dan game loop.",
-      solution: "Repo berisi scene Godot dan script C# untuk player, enemy AI, health, combat, camera, dan manager.",
+      solution: "Repo berisi scene Godot dan script C# untuk player, enemy behavior, health, combat, camera, dan manager.",
       role: "Mengembangkan logic gameplay, C# scripting, state system, combat, dan struktur scene.",
-      features: ["Gerakan isometrik", "Dodge roll", "Enemy AI FSM", "Combat", "Camera feedback"],
+      features: ["Gerakan isometrik", "Dodge roll", "Enemy behavior FSM", "Combat", "Camera feedback"],
       learning: "Memperdalam C#, struktur game, dan implementasi sistem gameplay di Godot.",
       repo: "https://github.com/Frizr/DOWN",
     },

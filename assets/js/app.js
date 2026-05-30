@@ -1,5 +1,5 @@
 (function () {
-  const data = window.portfolioData;
+  const data = window.projectData;
   const photoKey = data.photoKey;
 
   const skillsGrid = document.querySelector("#skills-grid");

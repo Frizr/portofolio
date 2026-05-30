@@ -1837,7 +1837,7 @@ textarea {
     var(--color-gray);
 }
 
-.visual-portfolio {
+.visual-project {
   background:
     linear-gradient(135deg, rgba(8, 16, 17, 0.9), rgba(31, 76, 134, 0.78), rgba(15, 139, 104, 0.56)),
     var(--color-gray);
@@ -1955,7 +1955,7 @@ textarea {
   color: var(--color-white);
 }
 
-/* Services, Signals, and Blog */
+/* Services, Notes, and Learning Notes */
 .prism-services,
 .testimonial-grid,
 .blog-grid {
